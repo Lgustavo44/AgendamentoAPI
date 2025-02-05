@@ -4,6 +4,12 @@
 <link href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" rel="stylesheet">
 @inject NavigationManager NavigationManager
 
+<style>
+    a {
+        text-decoration: none !important;
+    }
+</style>
+
 <AuthorizeView>
     <Authorized>
         <MudPaper Width="250px" Class="d-inline-flex py-3" Elevation="0" Style="color:#fff; background-color:#008000">
@@ -25,7 +31,7 @@
                             <MudNavLink Href="/admin/equipamentos/cadastrar" Icon="@Icons.Material.Filled.AddBox" Style="color:white;">Cadastrar Equipamento</MudNavLink>
                         </MudNavGroup>
                         <MudNavGroup Title="Agendamentos" Icon="@Icons.Material.Filled.CalendarToday" Expanded="true">
-                            <MudNavLink Href="/admin/agendamentos" Icon="@Icons.Material.Filled.CalendarViewMonth" Style="color:white;">Vizualizar Agendamentos</MudNavLink>
+                            <MudNavLink Href="/admin/agendamentos" Icon="@Icons.Material.Filled.CalendarViewMonth" Style="color:white;">Visualizar Agendamentos</MudNavLink>
                             <MudNavLink Href="/admin/agendamentos/cadastrar" Icon="@Icons.Material.Filled.AddCircle" Style="color:white;">Realizar Agendamento</MudNavLink>
                         </MudNavGroup>
                     }
@@ -62,7 +68,6 @@
             if (user?.Identity?.IsAuthenticated == true)
             {
                 var role = await loginAPI.GetUserRolesAsync();
-
                 roleInfo = role?.NivelAcesso;
             }
         }

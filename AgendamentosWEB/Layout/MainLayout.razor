@@ -12,7 +12,7 @@
             <MudIconButton Icon="@Icons.Material.Filled.Menu" OnClick="ToggleDrawer" Style="color: white;" />
             <div style="flex-grow: 1;" DisableOverlay="true"></div>
         }
-        <MudImage Class="mud-image" Src="images/afs.png" Style="max-width: 100px; height: auto;"></MudImage>
+        <MudImage Class="mud-image" @onclick="IrParaHome" Src="images/afs.png" Style="max-width: 100px; height: auto;"></MudImage>
         <div style="flex-grow: 1;"></div>
         <AuthorizeView>
             <Authorized>
@@ -33,6 +33,7 @@
     <MudMainContent class="main-content pa-10" Style="background-color: #fff;">
         @Body
     </MudMainContent>
+    <Footer/>
 
 </MudLayout>
 
@@ -52,6 +53,11 @@
     private void ToggleDrawer()
     {
         drawerOpen = !drawerOpen;
+    }
+
+    private void IrParaHome()
+    {
+        NavigationManager!.NavigateTo("/");
     }
 
     private async Task Logout()
