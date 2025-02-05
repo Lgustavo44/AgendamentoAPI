@@ -115,7 +115,7 @@
             professores = await professoresAPI.GetProfessoresAsync() ?? new List<ProfessoresResponse>();
             aulas = await aulasAPI.GetAulasAsync() ?? new List<AulasResponse>();
             equipamentos = await equipamentosAPI.GetEquipamentosAsync() ?? new List<EquipamentoResponse>();
-            var feriadosApiUrl = "https://date.nager.at/api/v3/PublicHolidays/2024/BR";
+            var feriadosApiUrl = "https://date.nager.at/api/v3/PublicHolidays/2025/BR";
             feriados = await Http.GetFromJsonAsync<List<PublicHoliday>>(feriadosApiUrl);
         }
         catch (Exception ex)
