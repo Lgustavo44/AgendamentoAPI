@@ -99,7 +99,7 @@ namespace Agendamentos.EndPoints
 
                         if (agendamentoExists)
                         {
-                            response.Add("Este agendamento já existe!");
+                            return Results.BadRequest(new { Message = $"Este agendamento na {aula}º aula já existe!" });
                         }
                         else
                         {
@@ -114,7 +114,7 @@ namespace Agendamentos.EndPoints
 
                             if (agendamentosCount >= equipamento)
                             {
-                                response.Add("Equipamento insufuciente!");
+                                return Results.BadRequest(new { Message = $"Equipamento insuficiente para atender a {aula}º aula!" });
                             }
                             else
                             {

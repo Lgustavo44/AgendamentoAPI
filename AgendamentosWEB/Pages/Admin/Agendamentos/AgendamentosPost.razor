@@ -175,7 +175,33 @@
                 else
                 {
                     var content = await result.Content.ReadAsStringAsync();
-                    errorMessage = content;
+
+                    try
+                    {
+                        var errorResponse = System.Text.Json.JsonSerializer.Deserialize<Dictionary<string, string>>(content,
+                            new System.Text.Json.JsonSerializerOptions
+                                {
+                                    PropertyNameCaseInsensitive = true 
+                                });
+
+                        if (errorResponse != null && errorResponse.ContainsKey("Message"))
+                        {
+                            Snackbar.Add(errorResponse["Message"], Severity.Error);
+                        }
+                        else if (errorResponse != null && errorResponse.ContainsKey("message")) 
+                        {
+                            Snackbar.Add(errorResponse["message"], Severity.Error);
+                        }
+                        else
+                        {
+                            Snackbar.Add("Erro desconhecido ao processar a solicitação.", Severity.Error);
+                        }
+                    }
+                    catch
+                    {
+                        Snackbar.Add(content, Severity.Error); 
+                    }
+
                     success = false;
                 }
             }
